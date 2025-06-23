@@ -1,15 +1,23 @@
+import { Link, Form } from "react-router-dom";
 import cls from "./NewPost.module.css";
-export default function NewPost({ onAuthorChange, onBodyChange }) {
+
+export default function NewPost() {
   return (
-    <form className={cls.form}>
+    <Form action="/create" className={cls.form} method="post">
       <p>
-        <label htmlFor="text">Text</label>
-        <textarea id="text" required rows={3} onChange={onBodyChange} />
+        <label htmlFor="author">Text</label>
+        <textarea id="author" name="author" required rows={3} />
       </p>
       <p>
-        <label htmlFor="name">Name</label>
-        <textarea id="name" required onChange={onAuthorChange} />
+        <label htmlFor="body">body</label>
+        <textarea id="body" name="body" required />
       </p>
-    </form>
+      <p className={cls.actions}>
+        <Link to=".." type="button" onClick={oncancel}>
+          Cancel
+        </Link>
+        <button type="submit">Submit</button>
+      </p>
+    </Form>
   );
 }
